@@ -20,7 +20,8 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSercret,
-      callbackURL: "/auth/google/callback"
+      callbackURL:
+        "https://fast-caverns-12060.herokuapp.com/auth/google/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
