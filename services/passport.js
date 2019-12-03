@@ -24,22 +24,17 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      try {
-        const user = await User.findOne({ googleId: profile.id });
-        if (user) {
-          //
-          done(null, user);
-        } else {
-          const newUser = new User({
-            googleId: profile.id
-          });
-
-          const savesUser = await newUser.save();
-          await done(null, savesUser);
-        }
-      } catch (err) {
-        console.log("err", err);
+      const user = await User.findOne({ googleId: profile.id });
+      if (user) {
+        //
+        return done(null, user);
       }
+
+      const newUser = await new User({
+        googleId: profile.id
+      }).save();
+
+      done(null, newUser);
     }
   )
 );
