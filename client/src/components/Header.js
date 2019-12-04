@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 class Header extends React.Component {
   renderContent() {
+    console.log("this.props.auth", this.props.auth);
     switch (this.props.auth) {
       case null:
         return;
@@ -25,7 +26,7 @@ class Header extends React.Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <a href="/" className="brand-logo">
+          <a href="/" className="left brand-logo">
             Emaily
           </a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
