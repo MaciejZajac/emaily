@@ -10,14 +10,14 @@ class Header extends React.Component {
       case null:
         return;
       case false:
-        return <Link to="/auth/google">Login with Google</Link>;
+        return <a href="/auth/google">Login with Google</a>;
       default:
         return [
           <li key="payments">
             <Payments />
           </li>,
           <li key="logout">
-            <Link to="/api/logout">Logout</Link>
+            <a href="/api/logout">Logout</a>
           </li>
         ];
     }

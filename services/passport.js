@@ -4,12 +4,10 @@ const User = require("../models/User");
 const keys = require("../config/keys");
 
 passport.serializeUser((user, done) => {
-  console.log("user@@@", user);
   done(null, user._id);
 });
 
 passport.deserializeUser(async (id, done) => {
-  console.log("ID", id);
   const user = await User.findById(id);
   if (user) {
     done(null, user);
